@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const mongoose = require('mongoose');
 const methodOverride = require('method-override');
+const session = require('express-session');
+const flash = require('connect-flash');
 
 mongoose.connect(`mongodb+srv://admin:${process.env.MONGOOSE_ATLAS_PASSWORD}@staycation.oy0yz3g.mongodb.net/?retryWrites=true&w=majority`)
 
@@ -20,6 +22,13 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(methodOverride('_method'));
+app.use(session({
+  secret: 'hello',
+  resave: false,
+  saveUninitialized: true,
+  cookie: {maxAge: 60000}
+}))
+app.use(flash());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
