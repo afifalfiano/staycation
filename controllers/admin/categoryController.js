@@ -1,10 +1,6 @@
-const Category = require('../models/Category');
-const flash = require('connect-flash');
+const Category = require('../../models/Category');
 
 module.exports = {
-    viewDashboard: (req, res) => {
-        res.render('admin/dashboard/view_dashboard', {title: 'Staycation | Dashboard'})
-    },
     viewCategory: async (req, res) => {
         try {
             const data = await Category.find();
@@ -60,14 +56,5 @@ module.exports = {
             req.flash('alertStatus', 'danger')
             res.redirect('/admin/category');
         }
-    },
-    viewBank: (req, res) => {
-        res.render('admin/bank/view_bank', {title: 'Staycation | Bank'})
-    },
-    viewItem: (req, res) => {
-        res.render('admin/item/view_item', {title: 'Staycation | Item'})
-    },
-    viewBooking: (req, res) => {
-        res.render('admin/booking/view_booking', {title: 'Staycation | Booking'})
-    },
+    }
 }
