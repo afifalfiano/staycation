@@ -3,7 +3,7 @@ const flash = require('connect-flash');
 
 module.exports = {
     viewDashboard: (req, res) => {
-        res.render('admin/dashboard/view_dashboard')
+        res.render('admin/dashboard/view_dashboard', {title: 'Staycation | Dashboard'})
     },
     viewCategory: async (req, res) => {
         try {
@@ -11,9 +11,9 @@ module.exports = {
             const alertMessage = req.flash('alertMessage');
             const alertStatus = req.flash('alertStatus');
             const alert = {message: alertMessage, status: alertStatus};
-            res.render('admin/category/view_category', {category: data, alert: alert})
+            res.render('admin/category/view_category', {category: data, alert: alert, title: 'Staycation | Category'})
         } catch (error) {
-            res.render('admin/category/view_category', {category: []})
+            res.render('admin/category/view_category', {category: [], title: 'Staycation | Category'})
         }
     },
     addCategory: async (req, res) => {
@@ -62,12 +62,12 @@ module.exports = {
         }
     },
     viewBank: (req, res) => {
-        res.render('admin/bank/view_bank')
+        res.render('admin/bank/view_bank', {title: 'Staycation | Bank'})
     },
     viewItem: (req, res) => {
-        res.render('admin/item/view_item')
+        res.render('admin/item/view_item', {title: 'Staycation | Item'})
     },
     viewBooking: (req, res) => {
-        res.render('admin/booking/view_booking')
+        res.render('admin/booking/view_booking', {title: 'Staycation | Booking'})
     },
 }
