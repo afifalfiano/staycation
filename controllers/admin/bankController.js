@@ -52,5 +52,18 @@ module.exports = {
             sendAlert(req, {message: `${error.message}`, status: 'danger'});
             res.redirect('/admin/bank'); 
         }
+    },
+    deleteBank: async (req, res) => {
+        try {
+            const {id} = req.params;
+            const data = await Bank.findOneAndRemove({_id: id});
+            sendAlert(req, {message: 'Success Delete Bank', status: 'success'});
+            if (data) {
+                res.redirect('/admin/bank');
+            }
+        } catch (error) {
+            sendAlert(req, {message: `${error.message}`, status: 'danger'});
+            res.redirect('/admin/bank');
+        }
     }
 }
