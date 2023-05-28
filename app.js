@@ -8,7 +8,8 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
 
-mongoose.connect(`mongodb+srv://admin:${process.env.MONGOOSE_ATLAS_PASSWORD}@staycation.oy0yz3g.mongodb.net/?retryWrites=true&w=majority`)
+// mongoose.connect(`mongodb+srv://admin:${process.env.MONGOOSE_ATLAS_PASSWORD}@staycation.oy0yz3g.mongodb.net/?retryWrites=true&w=majority`)
+mongoose.connect(`mongodb://127.0.0.1:27017/staycation`)
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
