@@ -56,7 +56,9 @@ module.exports = {
     deleteBank: async (req, res) => {
         try {
             const {id} = req.params;
-            const data = await Bank.findOneAndRemove({_id: id});
+            const data = await Bank.findOne({_id: id});
+            await fs.unlink(path.join(`public/${data.imageUrl}`));
+            await data.deleteOne({_id: id});
             sendAlert(req, {message: 'Success Delete Bank', status: 'success'});
             if (data) {
                 res.redirect('/admin/bank');
