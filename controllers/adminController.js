@@ -16,6 +16,20 @@ module.exports = {
             res.redirect('/admin/category')
         }
     },
+    editCategory: async (req, res) => {
+        const {id, name} = req.body;
+        const category = await Category.findOneAndUpdate({_id: id}, {$set: {name}});
+        if (category) {
+            res.redirect('/admin/category'); 
+        }
+    },
+    deleteCategory: async (req, res) => {
+        const {id} = req.params;
+        const category = await Category.findOneAndRemove({_id: id});
+        if (category) {
+            res.redirect('/admin/category');
+        }
+    },
     viewBank: (req, res) => {
         res.render('admin/bank/view_bank')
     },

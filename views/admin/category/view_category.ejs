@@ -79,14 +79,16 @@
     </div>
 </div>
 
-<%- include('add_category.ejs')%>
-<%- include('edit_category.ejs')%>
-<%- include('../../partials/js.ejs')%>
+<%- include('add_modal.ejs') %>
+<%- include('edit_modal.ejs') %>
+<%- include('../../partials/js.ejs') %>
 
 
 <script>
-
-$('#dataTable').on('click', '.button-update', function() {
-    console.log('click')
-})
+ $('#dataTable').on('click', '.button-update', (data) => {
+    const {id, name} = data.currentTarget.dataset
+    $('.id').val(id);
+    $('.name').val(name);
+    $('#edit-modal').modal('show');
+ })
 </script>
