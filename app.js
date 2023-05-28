@@ -3,6 +3,9 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose = require('mongoose');
+
+mongoose.connect(`mongodb+srv://admin:${process.env.MONGOOSE_ATLAS_PASSWORD}@staycation.oy0yz3g.mongodb.net/?retryWrites=true&w=majority`)
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

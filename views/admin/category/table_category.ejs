@@ -1,6 +1,10 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-category">
+            <i class="fas fa-plus"></i>
+        </button>
+        
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -12,6 +16,18 @@
                         <th>Action</th>
                     </tr>
                 </thead>
+                <tbody>
+                    <% category.forEach((item, i) => { %>
+                        <tr>
+                            <td><%= i + 1 %></td>
+                            <td><%= item.name %></td>
+                            <td>
+                                <button type="button" class="btn btn-warning btn-circle btn-sm btn-update"><i class="fas fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger btn-circle btn-sm btn-delete"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    <%}) %>
+                </tbody>
             </table>
         </div>
     </div>
