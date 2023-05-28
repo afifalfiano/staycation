@@ -29,7 +29,7 @@
                                 <!-- Tables -->
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+                    <%- include('../../partials/message.ejs')%>
                     <!-- Page Heading -->
                     <!-- DataTales Example -->
                     <%- include('table_bank.ejs') %>
@@ -81,3 +81,19 @@
 </div>
 
 <%- include('../../partials/js.ejs')%>
+<%- include('add_modal.ejs')%>
+<%- include('edit_modal.ejs')%>
+
+<script>
+ $('#dataTable').on('click', '.button-update', (data) => {
+    console.log(data.currentTarget.dataset)
+    const {id, namebank, nomorrekening, name} = data.currentTarget.dataset
+    $('#id').val(id);
+    $('#nameholder').val(name);
+    $('#namebank').val(namebank);
+    $('#nomorrekening').val(nomorrekening);
+    $('#edit-modal').modal('show');
+ })
+
+ $(".alert").delay(1500).slideUp(300);
+</script>
